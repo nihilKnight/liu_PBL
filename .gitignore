@@ -94,3 +94,5 @@ learnSys.iml
 .settings\
 .idea\
 .project
+
+**/.venv/

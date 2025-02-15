@@ -97,3 +97,5 @@ learnSys.iml
 
 **/.venv/
 **/__pycache__/
+
+**/.env

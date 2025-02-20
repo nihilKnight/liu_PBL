@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-container">
+    <nav class="main-nav">{% include 'nav.html' %}</nav>
+    
+    <section class="course-list">
+        <div class="section-header">
+            <h2>全部课程</h2>
+            <div class="pagination">
+                {% if pagination.has_prev %}
+                <a href="?page={{ pagination.prev_num }}">&lt; 上一页</a>
+                {% endif %}
+                <span>第 {{ pagination.page }} 页</span>
+                {% if pagination.has_next %}
+                <a href="?page={{ pagination.next_num }}">下一页 &gt;</a>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="course-grid-4x4">
+            {% for course in pagination.items %}
+            <div class="course-card">
+                <img src="{{ course.cover }}" alt="{{ course.title }}">
+                <div class="card-body">
+                    <h4>{{ course.title }}</h4>
+                    <div class="card-meta">
+                        <span>👥 {{ course.students }}</span>
+                        <span>⏳ {{ course.duration }}</span>
+                    </div>
+                    <a href="{{ url_for('course_detail', course_id=course.id) }}" class="btn">详情</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

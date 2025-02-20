@@ -1,11 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="dashboard">
-    <h1>Hello, World!</h1>
-    <div class="nav-links">
-        <p>欢迎回来，{{ session.user }}！</p>
-        <a href="{{ url_for('logout') }}" class="logout-btn">退出登录</a>
+<div class="main-container">
+    <nav class="main-nav">{% include 'nav.html' %}</nav>
+
+    <!-- 轮播图 -->
+    <div class="carousel">
+        {% for course in featured_courses %}
+        <div class="slide">
+            <img src="{{ course.cover }}" alt="{{ course.title }}">
+            <div class="slide-info">
+                <h3>{{ course.title }}</h3>
+                <a href="{{ url_for('course_detail', course_id=course.id) }}" class="btn">查看详情</a>
+            </div>
+        </div>
+        {% endfor %}
     </div>
+
+    <!-- 推荐课程 -->
+    <section class="course-section">
+        <div class="section-header">
+            <h2>精选课程</h2>
+            <a href="{{ url_for('courses') }}" class="more-btn">更多 &gt;</a>
+        </div>
+        <div class="course-grid">
+            {% for course in recent_courses[:8] %}
+            <div class="course-card">
+                <img src="{{ course.cover }}" alt="{{ course.title }}">
+                <div class="card-body">
+                    <h4>{{ course.title }}</h4>
+                    <a href="{{ url_for('course_detail', course_id=course.id) }}" class="btn">详情</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
 </div>
 {% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-container">
+    <nav class="main-nav">{% include 'nav.html' %}</nav>
+    
+    <article class="course-detail">
+        <img class="course-cover" src="{{ course.cover }}" alt="{{ course.title }}">
+        
+        <div class="course-meta">
+            <h1>{{ course.title }}</h1>
+            <div class="stats">
+                <span>🎓 已学人数：{{ course.students }}</span>
+                <span>⏱ 课程时长：{{ course.duration }}</span>
+            </div>
+        </div>
+
+        <div class="course-content">
+            <h3>课程简介</h3>
+            <p>{{ course.description }}</p>
+            
+            <div class="progress-section">
+                <h4>学习进度</h4>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 30%;"></div>
+                </div>
+                <button class="start-btn">开始学习</button>
+            </div>
+        </div>
+    </article>
+</div>
+{% endblock %}

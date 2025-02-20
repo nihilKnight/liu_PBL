@@ -1,0 +1,11 @@
+<!-- 导航栏 -->
+<div class="nav-brand">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="STEM EDU">
+</div>
+<div class="nav-links">
+    <a href="{{ url_for('index') }}">首页</a>
+    <a href="{{ url_for('about') }}">团队介绍</a>
+    <a href="{{ url_for('projects') }}">项目简介</a>
+    <a href="{{ url_for('courses') }}">课程列表</a>
+    <a href="{{ url_for('profile') }}">我的</a>
+</div>
